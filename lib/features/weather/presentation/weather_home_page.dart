@@ -52,30 +52,32 @@ class _WeatherHomePageState extends State<WeatherHomePage> with WidgetsBindingOb
         elevation: 0,
         title: _buildSearchField(),
       ),
-      body: StreamBuilder<WeatherState>(
-        stream: _weatherBloc.weatherStream,
-        initialData: WeatherInitial(),
-        builder: (context, snapshot) {
-          final state = snapshot.data;
-          if (state is WeatherLoading) {
-            return _buildShimmerEffect();
-          }
-          if (state is WeatherError) {
-            return Center(child: Text(state.message, style: AppTextStyles.errorText));
-          }
-          if (state is LocationPermissionRequired) {
-            return _buildPermissionRequiredUI(state);
-          }
-          if (state is SearchResultState) {
-            return _buildSearchResults(state.searchResult);
-          }
-          if (state is WeatherLoaded) {
-            return _buildWeatherDisplay(state.weatherForecast);
-          }
-          return const Center(
-              child: Text('Search for a location to see the weather forecast',
-                  style: AppTextStyles.bodyLg));
-        },
+      body: SafeArea(
+        child: StreamBuilder<WeatherState>(
+          stream: _weatherBloc.weatherStream,
+          initialData: WeatherInitial(),
+          builder: (context, snapshot) {
+            final state = snapshot.data;
+            if (state is WeatherLoading) {
+              return _buildShimmerEffect();
+            }
+            if (state is WeatherError) {
+              return Center(child: Text(state.message, style: AppTextStyles.errorText));
+            }
+            if (state is LocationPermissionRequired) {
+              return _buildPermissionRequiredUI(state);
+            }
+            if (state is SearchResultState) {
+              return _buildSearchResults(state.searchResult);
+            }
+            if (state is WeatherLoaded) {
+              return _buildWeatherDisplay(state.weatherForecast);
+            }
+            return const Center(
+                child: Text('Search for a location to see the weather forecast',
+                    style: AppTextStyles.bodyLg));
+          },
+        ),
       ),
     );
   }
@@ -419,7 +421,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> with WidgetsBindingOb
                   height: 40,
                 ),
                 SizedBox(
-                  width: 130,
+                  width: 100,
                   child: Text(
                     'H: ${day.day.maxtempC.toStringAsFixed(0)}° L: ${day.day.mintempC.toStringAsFixed(0)}°',
                     textAlign: TextAlign.right,

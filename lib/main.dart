@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_forecast/features/onboarding/presentation/onboarding_page.dart';
@@ -12,6 +13,11 @@ void main() async {
 
   final prefs = getIt<SharedPreferences>();
   final hasSeenOnboarding = prefs.getBool('hasSeenOnboarding') ?? false;
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    systemNavigationBarColor: Colors.transparent,
+  ));
 
   runApp(MyApp(hasSeenOnboarding: hasSeenOnboarding));
 }
