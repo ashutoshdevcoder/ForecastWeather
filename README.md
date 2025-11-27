@@ -1,16 +1,5 @@
 # weather_forecast
+A Flutter project which runs on both android and ios mobile platform.
+Stay informed with a clean, intuitive weather app that provides real-time conditions, a detailed 24-hour hourly forecast, and an extended outlook for the next two days. Built for simplicity and accuracy to help you plan your schedule effectively.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Note for Developers: To run this project locally, you must obtain a free API key from a weather api service and add it to a .env file.
